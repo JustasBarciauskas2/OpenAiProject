@@ -16,7 +16,7 @@ def main():
 
     print(f"User Input: {user_input}")
 
-    if validate_length(user_input):
+    if checkIfInputValidateLength(user_input):
         generateBrandingSnippet(user_input)
         generateKeywords(user_input)
     else:
@@ -24,7 +24,7 @@ def main():
             f"Input length is too long. Must be under {MAX_INPUT_LENGTH} characters. Input: '{user_input}' is {len(user_input)} characters long")
 
 
-def validate_length(prompt: str) -> bool:
+def checkIfInputValidateLength(prompt: str) -> bool:
     return len(prompt) <= MAX_INPUT_LENGTH
 
 

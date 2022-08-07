@@ -1,8 +1,10 @@
-from tkinter.tix import MAX
 from fastapi import FastAPI, HTTPException
 from copyKitt import generateBrandingSnippet, generateKeywords
+from mangum import Mangum
 
 app = FastAPI()
+handler = Mangum(app)
+
 MAX_INPUT_LENGTH = 32
 
 
@@ -10,7 +12,7 @@ MAX_INPUT_LENGTH = 32
 async def generateSnippetApi(prompt: str):
     validateInputLength(prompt)
     snippet = generateBrandingSnippet(prompt)
-    return {"snippet": snippet, "keywords": None}
+    return {"snippet": snippet, "keywords": []}
 
 
 @app.get("/generate_keyword")
